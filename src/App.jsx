@@ -1,14 +1,14 @@
-import './App.css'
+import "./App.css";
+import Contents from "./components/body/Contents";
+import MainHeader from "./components/header/MainHeader";
 
 function App() {
-  
-
   return (
     <>
-      <h1>React App</h1>
-        
+      <MainHeader />
+      <Contents />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
