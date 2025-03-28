@@ -7,7 +7,7 @@
 4. release: 다음 출시 버전을 준비하는 브랜치
 5. hotfix: 출시된 제품의 버그를 고치기 위한 브랜치
 
-## [커밋 컨벤션] (https://moonnight0.tistory.com/entry/Git-%EC%A2%8B%EC%9D%80-%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EA%B7%9C%EC%B9%99)
+## [커밋 컨벤션](https://moonnight0.tistory.com/entry/Git-%EC%A2%8B%EC%9D%80-%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EA%B7%9C%EC%B9%99)
 ```
 - feat : 새로운 기능
 - fix : 버그 수정
