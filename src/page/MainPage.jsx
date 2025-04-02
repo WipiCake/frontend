@@ -5,7 +5,6 @@ import Header from '../components/Main/Header'
 const MainPage = () => {
   return (
     <>
-      <Header />
       <Main />
     </>
   )
