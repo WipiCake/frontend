@@ -1,20 +1,23 @@
 import React from 'react';
-import HeaderPage from './components/Main/Header';
-import MainContent from './components/Main/Main';
-import FooterPage from './components/Main/Footer';
 import './App.css';
+import Footer from "./components/footer/Footer";
+
 import { Route, Routes } from 'react-router';
-import Footer from './components/Main/Footer';
-import MainPage from './page/MainPage';
-import Header from './components/Main/Header';
-import SignUpPage from './page/SignUpPage';
+import MainHeader from './components/header/MainHeader';
+import Contents from './components/body/Contents';
+import Join from './pages/join/Join';
+import Login from './pages/login/Login';
+
+
 function App() {
   return (
     <div>
-      <Header />
+      <MainHeader />
       <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/signup' element={<SignUpPage />} />
+        <Route path="/" element={<Contents />}>
+          <Route path="/join" element={<Join />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
       </Routes>
       <Footer />
     </div>
