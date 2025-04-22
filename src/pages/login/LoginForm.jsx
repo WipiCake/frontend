@@ -4,10 +4,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import HideEye from "../../assets/img/HideEye.svg";
 import OpenEye from "../../assets/img/OpenEye.svg";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
@@ -24,17 +27,33 @@ const LoginForm = () => {
   } = useForm();
 
   const mutation = useMutation({
-    mutationFn: (data) => {
+    mutationFn: async (data) => {
       console.log(data, "data");
-
-      const response = axios.post("/auth/login", {
-        username: data.email,
-        password: data.password,
-      });
-
-      console.log("res: ", response);
+  
+      const formData = new FormData();
+      formData.append("username", data.email);
+      formData.append("password", data.password);
+  
+      const response = await axios.post(
+        "https://cat-informed-newt.ngrok-free.app/login",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+  
+      console.log("res:", response);
+      return response;
     },
-    onSuccess: () => {},
+  
+    onSuccess: (response) => {
+      console.log("로그인 성공!");
+      console.log("전체 응답 헤더:", response.headers); 
+      console.log("응답 바디:", response.data);
+    },
+    
   });
 
   const onSubmit = (data) => {
@@ -60,10 +79,6 @@ const LoginForm = () => {
             placeholder="아이디를 입력하세요."
             {...register("email", {
               required: "이메일을 입력해주세요.",
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "이메일이 형식에 맞지 않습니다.",
-              },
             })}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "emailError" : undefined}
@@ -85,10 +100,6 @@ const LoginForm = () => {
             placeholder="비밀번호를 입력하세요."
             {...register("password", {
               required: "비밀번호를 입력해주세요.",
-              pattern: {
-                value: /^(?=.*\d)(?=.*[!@#$%^&*()_+[\]{}|;:'",.<>?/~`]).{8,}$/,
-                message: "비밀번호는 8자리 이상 특수문자가 포함되어야 합니다.",
-              },
             })}
           />
           <button

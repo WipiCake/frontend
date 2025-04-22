@@ -19,6 +19,7 @@
     "@tanstack/react-query-devtools": "^5.71.0",
     "axios": "^1.8.4",
     "daisyui": "^5.0.9",
+    "http-proxy-middleware": "^3.0.5",
     "react": "^19.0.0",
     "react-daum-postcode": "^3.2.0",
     "react-dom": "^19.0.0",

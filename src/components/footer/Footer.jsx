@@ -1,4 +1,5 @@
 import React from 'react'
+import Instagram from '../../assets/icons/instagram.svg'
 
 const Footer = () => {
 
@@ -47,7 +48,7 @@ const Footer = () => {
               <img 
                 width={30}
                 height={30}
-                src="/src/assets/icons/instagram.png" 
+                src={Instagram} 
                 alt="인스타그램" 
                 className="cursor-pointer"
               />
