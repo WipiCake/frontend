@@ -4,8 +4,8 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 
 export default function (app) {
   app.use(
-    createProxyMiddleware("/auth", {
-      target: "https://happily-humorous-mammal.ngrok-free.app",
+    createProxyMiddleware("/login", {
+      target: "https://cat-informed-newt.ngrok-free.app",
       changeOrigin: true,
     })
   );
