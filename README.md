@@ -1,7 +1,7 @@
 # React + Vite
 
 ## [Git-flow 전략](https://techblog.woowahan.com/2553/)
-1. master: 제품 출시 버전을 관리하는 메인 브랜치
+1. main: 제품 출시 버전을 관리하는 메인 브랜치
 2. develop: 다음 출시 버전을 위해 개발하는 브랜치
 3. feature: 새로운 기능을 개발하는 브랜치
 4. release: 다음 출시 버전을 준비하는 브랜치
