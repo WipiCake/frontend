@@ -5,7 +5,7 @@ import GoogleLogo from "../../assets/img/GoogleLogo.svg";
 const SnsLogin = () => {
   return (
     <div className="flex flex-col gap-[20px] mt-[36px] mb-[72px] w-full">
-      <p className="font-normal text-[15px] text-center text-[#767676] cursor-pointer">
+      <p className="text-k-15-Regular text-center text-[#767676] cursor-pointer">
         SNS 간편 로그인
       </p>
       <div className="flex  gap-[20px] w-full justify-center">

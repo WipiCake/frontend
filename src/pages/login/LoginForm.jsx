@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import HideEye from "../../assets/img/HideEye.svg";
 import OpenEye from "../../assets/img/OpenEye.svg";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 
 const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
@@ -73,7 +73,7 @@ const LoginForm = () => {
           </label>
 
           <input
-            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa]"
+            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa] text-k-16-Regular"
             type="text"
             id="email"
             placeholder="아이디를 입력하세요."
@@ -94,7 +94,7 @@ const LoginForm = () => {
           </label>
 
           <input
-            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa]"
+            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa] text-k-16-Regular"
             type={passwordVisible ? "text" : "password"}
             id="password"
             placeholder="비밀번호를 입력하세요."
@@ -119,7 +119,7 @@ const LoginForm = () => {
         </div>
 
         <div className="flex items-center justify-between">
-          <label className="flex items-center cursor-pointer">
+          <label className="flex items-center cursor-pointer text-k-15-Regular text-[#999999]">
             <input
               type="checkbox"
               id="rememberMe"
@@ -138,10 +138,10 @@ const LoginForm = () => {
             </span>
             아이디 기억하기
           </label>
-          <a href="#">아이디 / 비밀번호 찾기</a>
+          <a href="#" className="text-k-15-Regular text-[#999999]">아이디 / 비밀번호 찾기</a>
         </div>
         <button
-          className="bg-[#E88B8B] w-[400px] h-[56px] text-white font-medium"
+          className="bg-[#E88B8B] w-[400px] h-[56px] text-white font-medium text-k-16-Medium"
           type="submit"
         >
           로그인

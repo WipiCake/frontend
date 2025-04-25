@@ -8,7 +8,7 @@ import FindIdCommonForm from './pages/find-id/FindIdCommonForm';
 import FindIdVerificationCode from './pages/find-id/FindIdVerificationCode';
 import FindIdCompleted from './pages/find-id/FindIdCompleted';
 import MainContent from './components/body/MainContent';
-import Mypage from './pages/mypage';
+// import Mypage from './pages/mypage';
 import './global.css';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
           />
           <Route path="completed" element={<FindIdCompleted />} />
         </Route>
-        <Route path="/mypage" element={<Mypage />} />
+        {/* <Route path="/mypage" element={<Mypage />} /> */}
       </Route>
     </Routes>
   );
