@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import HideEye from "../../assets/img/HideEye.svg";
 import OpenEye from "../../assets/img/OpenEye.svg";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "../../utils/zod";
 // import { useNavigate } from "react-router-dom";
+
 
 
 const LoginForm = () => {
@@ -24,14 +27,14 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({resolver : zodResolver(loginSchema)});
 
   const mutation = useMutation({
     mutationFn: async (data) => {
       console.log(data, "data");
   
       const formData = new FormData();
-      formData.append("username", data.email);
+      formData.append("username", data.id);
       formData.append("password", data.password);
   
       const response = await axios.post(
@@ -68,23 +71,21 @@ const LoginForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
-          <label className="hidden" htmlFor="email">
-            이메일
+          <label className="hidden" htmlFor="id">
+            아이디
           </label>
 
           <input
             className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa] text-k-16-Regular"
             type="text"
-            id="email"
+            id="id"
             placeholder="아이디를 입력하세요."
-            {...register("email", {
-              required: "이메일을 입력해주세요.",
-            })}
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? "emailError" : undefined}
+            {...register("id")}
+            aria-invalid={!!errors.id}
+            aria-describedby={errors.id ? "idError" : undefined}
           />
-          {errors.email && (
-            <p className="pt-2 text-[red]">{errors.email.message}</p>
+          {errors.id && (
+            <p className="pt-2 text-[red]">{errors.id.message}</p>
           )}
         </div>
 
@@ -98,9 +99,7 @@ const LoginForm = () => {
             type={passwordVisible ? "text" : "password"}
             id="password"
             placeholder="비밀번호를 입력하세요."
-            {...register("password", {
-              required: "비밀번호를 입력해주세요.",
-            })}
+            {...register("password")}
           />
 
           <button
