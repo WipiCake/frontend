@@ -142,7 +142,7 @@ const LoginForm = () => {
           <a href="#" className="text-k-15-Regular text-[#999999]">아이디 / 비밀번호 찾기</a>
         </div>
         <button
-          className="bg-[#E88B8B] w-[400px] h-[56px] text-white font-medium text-k-16-Medium"
+          className="bg-[#E88B8B] w-[400px] h-[56px] text-white text-k-16-Medium"
           type="submit"
         >
           로그인
