@@ -102,11 +102,13 @@ const LoginForm = () => {
               required: "비밀번호를 입력해주세요.",
             })}
           />
+
           <button
             type="button"
             onClick={togglePasswordVisibility}
             className="absolute right-0 text-gray-500 transform -translate-y-1/2 top-1/2"
           >
+
             <img
               src={passwordVisible ? HideEye : OpenEye}
               alt={passwordVisible ? "비밀번호 숨기기" : "비밀번호 보기"}
