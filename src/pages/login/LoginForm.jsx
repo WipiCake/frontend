@@ -4,13 +4,16 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import HideEye from "../../assets/img/HideEye.svg";
 import OpenEye from "../../assets/img/OpenEye.svg";
-import { useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "../../utils/zod";
+// import { useNavigate } from "react-router-dom";
+
 
 
 const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
@@ -24,14 +27,14 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({resolver : zodResolver(loginSchema)});
 
   const mutation = useMutation({
     mutationFn: async (data) => {
       console.log(data, "data");
   
       const formData = new FormData();
-      formData.append("username", data.email);
+      formData.append("userId", data.id);
       formData.append("password", data.password);
   
       const response = await axios.post(
@@ -68,23 +71,21 @@ const LoginForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
-          <label className="hidden" htmlFor="email">
-            이메일
+          <label className="hidden" htmlFor="id">
+            아이디
           </label>
 
           <input
-            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa]"
+            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa] text-k-16-Regular"
             type="text"
-            id="email"
+            id="id"
             placeholder="아이디를 입력하세요."
-            {...register("email", {
-              required: "이메일을 입력해주세요.",
-            })}
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? "emailError" : undefined}
+            {...register("id")}
+            aria-invalid={!!errors.id}
+            aria-describedby={errors.id ? "idError" : undefined}
           />
-          {errors.email && (
-            <p className="pt-2 text-[red]">{errors.email.message}</p>
+          {errors.id && (
+            <p className="pt-2 text-[red]">{errors.id.message}</p>
           )}
         </div>
 
@@ -94,19 +95,19 @@ const LoginForm = () => {
           </label>
 
           <input
-            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa]"
+            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa] text-k-16-Regular"
             type={passwordVisible ? "text" : "password"}
             id="password"
             placeholder="비밀번호를 입력하세요."
-            {...register("password", {
-              required: "비밀번호를 입력해주세요.",
-            })}
+            {...register("password")}
           />
+
           <button
             type="button"
             onClick={togglePasswordVisibility}
             className="absolute right-0 text-gray-500 transform -translate-y-1/2 top-1/2"
           >
+
             <img
               src={passwordVisible ? HideEye : OpenEye}
               alt={passwordVisible ? "비밀번호 숨기기" : "비밀번호 보기"}
@@ -119,7 +120,7 @@ const LoginForm = () => {
         </div>
 
         <div className="flex items-center justify-between">
-          <label className="flex items-center cursor-pointer">
+          <label className="flex items-center cursor-pointer text-k-15-Regular text-[#999999]">
             <input
               type="checkbox"
               id="rememberMe"
@@ -138,10 +139,10 @@ const LoginForm = () => {
             </span>
             아이디 기억하기
           </label>
-          <a href="#">아이디 / 비밀번호 찾기</a>
+          <a href="#" className="text-k-15-Regular text-[#999999]">아이디 / 비밀번호 찾기</a>
         </div>
         <button
-          className="bg-[#E88B8B] w-[400px] h-[56px] text-white font-medium"
+          className="bg-[#E88B8B] w-[400px] h-[56px] text-white text-k-16-Medium"
           type="submit"
         >
           로그인

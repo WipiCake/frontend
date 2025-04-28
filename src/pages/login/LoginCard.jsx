@@ -9,13 +9,13 @@ const LoginCard = () => {
       <div className="flex flex-col items-center w-[496px] px-[48px] py-[40px] bg-white">
         <LoginForm />
         <SnsLogin />
-        <div className="w-full border border-[#DBDBDB] h-[56px] flex justify-center items-center">
-          <a className="font-medium text-[16px] text-[#767676]" href="#">
+        <div className="w-full h-[56px] flex justify-center items-center border border-[#DBDBDB]">
+          <button className="text-k-16-Medium text-[#767676] ">
             회원가입
-          </a>
+          </button>
         </div>
         <div className="flex justify-center w-full mt-[48px]">
-          <p className="flex items-center font-normal text-[15px] text-[#767676]">
+          <p className="flex items-center text-k-15-Regular text-[15px] text-[#767676] ">
             회원가입이 필요 없으신가요?&nbsp;
             <a className="text-[#1A1A1A] flex items-center" href="#">
               비회원 주문
