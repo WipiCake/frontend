@@ -1,20 +1,20 @@
-import React from "react";
-import MainLogo from "../../assets/img/MainLogo.svg";
-import User from "../../assets/img/User.svg";
-import ShoppingBasket from "../../assets/img/ShoppingBasket.svg";
-import Liked from "../../assets/img/Liked.svg";
+import React from 'react';
+import MainLogo from '../../assets/img/MainLogo.svg';
+import User from '../../assets/img/User.svg';
+import ShoppingBasket from '../../assets/img/ShoppingBasket.svg';
+import Liked from '../../assets/img/Liked.svg';
 
 const Header = () => {
   return (
-    <div className="flex justify-center w-full  top-[47px] h-[90px] bg-white border-b border-[#CBCBCB]">
-      <header className="flex min-w-[1280px] justify-between items-center">
+    <div className="top-[47px] flex h-[90px] w-full justify-center bg-white">
+      <header className="flex min-w-[1280px] items-center justify-between">
         <div className="flex items-center gap-[9px]">
           <h1>
             <a href="#">
-              <img src={MainLogo} alt="메인 로고" className="w-auto h-[28px]" />
+              <img src={MainLogo} alt="메인 로고" className="h-[28px] w-auto" />
             </a>
           </h1>
-          <span className="text-[18px] font-medium">윗피 케이크</span>
+          <span className="text-k-18-Medium">윗피 케이크</span>
         </div>
         <div>
           <ul className="flex gap-[33px]">
