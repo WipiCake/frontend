@@ -1,14 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import HideEye from "../../assets/img/HideEye.svg";
-import OpenEye from "../../assets/img/OpenEye.svg";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../../utils/zod";
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import HideEye from '../../assets/img/HideEye.svg';
+import OpenEye from '../../assets/img/OpenEye.svg';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema } from '../../utils/zod';
 // import { useNavigate } from "react-router-dom";
-
-
 
 const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -27,36 +25,35 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({resolver : zodResolver(loginSchema)});
+  } = useForm({ resolver: zodResolver(loginSchema) });
 
   const mutation = useMutation({
     mutationFn: async (data) => {
-      console.log(data, "data");
-  
+      console.log(data, 'data');
+
       const formData = new FormData();
-      formData.append("userId", data.id);
-      formData.append("password", data.password);
-  
+      formData.append('userId', data.id);
+      formData.append('password', data.password);
+
       const response = await axios.post(
-        "https://cat-informed-newt.ngrok-free.app/login",
+        'https://cat-informed-newt.ngrok-free.app/login',
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
-        }
+        },
       );
-  
-      console.log("res:", response);
+
+      console.log('res:', response);
       return response;
     },
-  
+
     onSuccess: (response) => {
-      console.log("로그인 성공!");
-      console.log("전체 응답 헤더:", response.headers); 
-      console.log("응답 바디:", response.data);
+      console.log('로그인 성공!');
+      console.log('전체 응답 헤더:', response.headers);
+      console.log('응답 바디:', response.data);
     },
-    
   });
 
   const onSubmit = (data) => {
@@ -65,9 +62,9 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-full login-form">
+    <div className="login-form w-full">
       <form
-        className="flex flex-col gap-[32px]"
+        className="flex flex-col gap-[3.2rem]"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
@@ -76,17 +73,15 @@ const LoginForm = () => {
           </label>
 
           <input
-            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa] text-k-16-Regular"
+            className="border-b-solid h-[5.7rem] w-[40rem] border-b border-b-[#DBDBDB] py-4 text-k-16-Regular text-[#aaaaaa]"
             type="text"
             id="id"
             placeholder="아이디를 입력하세요."
-            {...register("id")}
+            {...register('id')}
             aria-invalid={!!errors.id}
-            aria-describedby={errors.id ? "idError" : undefined}
+            aria-describedby={errors.id ? 'idError' : undefined}
           />
-          {errors.id && (
-            <p className="pt-2 text-[red]">{errors.id.message}</p>
-          )}
+          {errors.id && <p className="pt-2 text-[red]">{errors.id.message}</p>}
         </div>
 
         <div className="relative">
@@ -95,23 +90,22 @@ const LoginForm = () => {
           </label>
 
           <input
-            className="w-[400px] h-[57px] border-b border-b-solid  border-b-[#DBDBDB] py-4 text-[#aaaaaa] text-k-16-Regular"
-            type={passwordVisible ? "text" : "password"}
+            className="border-b-solid h-[5.7rem] w-[40rem] border-b border-b-[#DBDBDB] py-4 text-k-16-Regular text-[#aaaaaa]"
+            type={passwordVisible ? 'text' : 'password'}
             id="password"
             placeholder="비밀번호를 입력하세요."
-            {...register("password")}
+            {...register('password')}
           />
 
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            className="absolute right-0 text-gray-500 transform -translate-y-1/2 top-1/2"
+            className="absolute right-0 top-1/2 -translate-y-1/2 transform text-gray-500"
           >
-
             <img
               src={passwordVisible ? HideEye : OpenEye}
-              alt={passwordVisible ? "비밀번호 숨기기" : "비밀번호 보기"}
-              className="w-[24px] h-[24px]"
+              alt={passwordVisible ? '비밀번호 숨기기' : '비밀번호 보기'}
+              className="h-[2.4rem] w-[2.4rem]"
             />
           </button>
           {errors.password && (
@@ -120,7 +114,7 @@ const LoginForm = () => {
         </div>
 
         <div className="flex items-center justify-between">
-          <label className="flex items-center cursor-pointer text-k-15-Regular text-[#999999]">
+          <label className="flex cursor-pointer items-center text-k-15-Regular text-[#999999]">
             <input
               type="checkbox"
               id="rememberMe"
@@ -129,20 +123,22 @@ const LoginForm = () => {
               className="hidden"
             />
             <span
-              className={`relative flex items-center justify-center w-[22px] h-[22px] mr-2 border-2 rounded-full ${
-                rememberMe ? "bg-green-500" : "border-[#DBDBDB]"
+              className={`relative mr-2 flex h-[2.2rem] w-[2.2rem] items-center justify-center rounded-full border-2 ${
+                rememberMe ? 'bg-green-500' : 'border-[#DBDBDB]'
               }`}
             >
               {rememberMe && (
-                <span className="w-3 h-3 bg-white rounded-full"></span>
+                <span className="h-3 w-3 rounded-full bg-white"></span>
               )}
             </span>
             아이디 기억하기
           </label>
-          <a href="#" className="text-k-15-Regular text-[#999999]">아이디 / 비밀번호 찾기</a>
+          <a href="#" className="text-k-15-Regular text-[#999999]">
+            아이디 / 비밀번호 찾기
+          </a>
         </div>
         <button
-          className="bg-[#E88B8B] w-[400px] h-[56px] text-white text-k-16-Medium"
+          className="h-[5.6rem] w-[40rem] bg-[#E88B8B] text-k-16-Medium text-white"
           type="submit"
         >
           로그인
