@@ -1,23 +1,23 @@
-import React from "react";
-import KakaoLogo from "../../assets/img/KakaoLogo.svg";
-import GoogleLogo from "../../assets/img/GoogleLogo.svg";
+import React from 'react';
+import KakaoLogo from '../../assets/img/KakaoLogo.svg';
+import GoogleLogo from '../../assets/img/GoogleLogo.svg';
 
 const SnsLogin = () => {
   return (
-    <div className="flex flex-col gap-[20px] mt-[36px] mb-[72px] w-full">
-      <p className="text-k-15-Regular text-center text-[#767676] cursor-pointer">
+    <div className="mb-[7.2rem] mt-[3.6rem] flex w-full flex-col gap-[2rem]">
+      <p className="cursor-pointer text-center text-k-15-Regular text-[#767676]">
         SNS 간편 로그인
       </p>
-      <div className="flex  gap-[20px] w-full justify-center">
-        <div className="w-[48px]  h-[48px] flex border border-[#DBDBDB] rounded-full items-center justify-center  gap-[8px] pl-[1px] cursor-pointer">
+      <div className="flex w-full justify-center gap-[2rem]">
+        <div className="flex h-[4.8rem] w-[4.8rem] cursor-pointer items-center justify-center gap-[0.8rem] rounded-full border border-[#DBDBDB] pl-[0.1rem]">
           <img
-            className="w-[30px] h-[30px]"
+            className="h-[3rem] w-[3rem]"
             src={KakaoLogo}
             alt="카카오 로고"
           />
         </div>
-        <div className="w-[48px]  h-[48px] flex border border-[#DBDBDB] rounded-full items-center justify-center  gap-[8px] cursor-pointer">
-          <img className="w-[30px] h-[30px]" src={GoogleLogo} alt="구글 로고" />
+        <div className="flex h-[4.8rem] w-[4.8rem] cursor-pointer items-center justify-center gap-[0.8rem] rounded-full border border-[#DBDBDB]">
+          <img className="h-[3rem] w-[3rem]" src={GoogleLogo} alt="구글 로고" />
         </div>
       </div>
     </div>
