@@ -16,11 +16,13 @@ const Footer = () => {
     'CEO: 오지혜',
     'Phone: 010-1234-5678',
   ];
+
   const FOOTERINFOLIST2 = [
     'BUSINESS LICENSE: 123-45-67712',
     'Adress: 46579 부산광역시 북구 덕천2길 30, 윗피케이크',
     '무통장입금: 신한은행 110-12345678 (예금주: 오지혜)',
   ];
+
   const ICON = [Instagram, NaverMap, KakaoChanel];
 
   return (
