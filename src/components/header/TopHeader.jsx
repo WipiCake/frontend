@@ -14,7 +14,7 @@ const TopHeader = () => {
             </Link>
             <span className="h-[1.5rem] border-r border-[#DBDBDB]"></span>
           </li>
-          <li className="relative flex items-center gap-[20px]">
+          <li className="relative flex items-center gap-[2rem]">
             <Link to="/login" className="text-k-15-Regular">
               로그인
             </Link>

@@ -1,23 +1,21 @@
-import React from "react";
-import LoginForm from "./LoginForm";
-import SnsLogin from "./SnsLogin";
-import RightArrow from "../../assets/img/RightArrow.svg";
+import React from 'react';
+import LoginForm from './LoginForm';
+import SnsLogin from './SnsLogin';
+import RightArrow from '../../assets/img/RightArrow.svg';
 
 const LoginCard = () => {
   return (
     <div>
-      <div className="flex flex-col items-center w-[496px] px-[48px] py-[40px] bg-white">
+      <div className="flex w-[49.6rem] flex-col items-center bg-white px-[4.8rem] py-[4rem]">
         <LoginForm />
         <SnsLogin />
-        <div className="w-full h-[56px] flex justify-center items-center border border-[#DBDBDB]">
-          <button className="text-k-16-Medium text-[#767676] ">
-            회원가입
-          </button>
+        <div className="flex h-[5.6rem] w-full items-center justify-center border border-[#DBDBDB]">
+          <button className="text-k-16-Medium text-[#767676]">회원가입</button>
         </div>
-        <div className="flex justify-center w-full mt-[48px]">
-          <p className="flex items-center text-k-15-Regular text-[15px] text-[#767676] ">
+        <div className="mt-[4.8rem] flex w-full justify-center">
+          <p className="flex items-center text-[1.5rem] text-k-15-Regular text-[#767676]">
             회원가입이 필요 없으신가요?&nbsp;
-            <a className="text-[#1A1A1A] flex items-center" href="#">
+            <a className="flex items-center text-[#1A1A1A]" href="#">
               비회원 주문
               <img src={RightArrow} alt="으론쪽 화살표" />
             </a>
