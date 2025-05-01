@@ -3,17 +3,9 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'CustomFont';
+  font-family: 'Pretendard';
   font-weight: 300 700;
   src: url('/assets/fonts/PretendardVariable.woff2') format('woff-variations');
-  unicode-range: U+AC00-D7AF, U+1100-11FF; /* 한글 */
-}
-
-@font-face {
-  font-family: 'CustomFont';
-  src: url('/assets/fonts/RobotoVariable.ttf') format('truetype');
-  font-weight: 300 700;
-  unicode-range: U+0020-007F; /* 영문/숫자 */
 }
 
 :root {
@@ -104,7 +96,7 @@ audio,
 video {
   margin: 0;
   padding: 0;
-  border: 0;
+  /* border: 0; */
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
@@ -148,7 +140,7 @@ table {
 
 *,
 body {
-  font-family: 'CustomFont';
+  font-family: 'Pretendard';
 }
 
 button {
