@@ -1,15 +1,15 @@
-import React from "react";
-import LoginCard from "./LoginCard";
+import React from 'react';
+import LoginCard from './LoginCard';
 
 const Login = () => {
   return (
-    <div className="flex justify-center w-full pt-[80px] pb-[162px]  mx-auto">
-      <div className="w-full max-w-[1280px] flex flex-col gap-[24px] items-center">
-        <div className="flex flex-col items-center gap-[40px]">
+    <div className="mx-auto flex w-full justify-center pb-[16.2rem] pt-[8rem]">
+      <div className="flex w-full max-w-[128rem] flex-col items-center gap-[2.4rem]">
+        <div className="flex flex-col items-center gap-[4rem]">
           <div>
-            <h2 className="text-[28px] font-medium">로그인</h2>
+            <h2 className="text-k-28_Medium">로그인</h2>
           </div>
-          <p className="font-medium text-center text-[18px] text-black">
+          <p className="text-center text-k-18-Medium">
             윗피 케이크에
             <br />
             오신 걸 환영합니다!
