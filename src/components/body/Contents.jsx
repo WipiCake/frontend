@@ -7,7 +7,7 @@ const Contents = () => {
   return (
     <>
       <MainHeader />
-      <div className="h-full w-full bg-[#F2EEEE] pb-[17rem]">
+      <div className="bg-bg-30 h-full min-h-[100vh] w-full pb-[17rem]">
         <Outlet />
       </div>
       <Footer />
