@@ -7,7 +7,7 @@ const Contents = () => {
   return (
     <>
       <MainHeader />
-      <div className="h-full w-full bg-[#F2EEEE] pb-[17rem]">
+      <div className="h-full w-full bg-white pb-[17rem]">
         <Outlet />
       </div>
       <Footer />

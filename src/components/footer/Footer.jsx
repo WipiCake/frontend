@@ -51,7 +51,7 @@ const Footer = () => {
         <div className="flex justify-center">
           <div className="relative flex w-[128rem] justify-center pt-[2rem]">
             <div className="flex w-[64rem] flex-col">
-              <div className="flex flex-col items-start gap-[0.4rem] text-k-13-Regular text-sm text-[#505050]">
+              <div className="flex flex-col items-start gap-[0.4rem] text-k-13-Regular text-[#505050]">
                 <div>
                   {FOOTERINFOLIST1.map((info, index) => (
                     <span key={index}>
