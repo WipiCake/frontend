@@ -9,21 +9,21 @@ const items = [
     imgUrl: '/images/1.svg',
     title: '딸기 시리즈',
     description: '달콤한 딸기 케이크',
-    price: '18,000원',
+    price: '18,000',
   },
   {
     id: 2,
     imgUrl: '/images/1.svg',
     title: '딸기 시리즈',
     description: '달콤한 딸기 케이크',
-    price: '18,000원',
+    price: '18,000',
   },
   {
     id: 3,
     imgUrl: '/images/1.svg',
     title: '딸기 시리즈',
     description: '달콤한 딸기 케이크',
-    price: '18,000원',
+    price: '18,000',
   },
 ];
 
@@ -33,7 +33,7 @@ const WishlistPage = () => {
   return (
     <div className="flex flex-col items-center">
       <span className="mt-[8rem] text-k-28_Medium">찜한 상품</span>
-      <div className="border-black-30 w-[128rem] border-b">
+      <div className="w-[128rem] border-b border-black-30">
         <span className="text-left text-k-18-Medium">
           전체 {items.length}개
         </span>
@@ -48,12 +48,11 @@ const WishlistPage = () => {
           {items.map((item, id) => (
             <div
               key={id}
-              className="border-black-20 bg-bg-10 flex h-[24rem] justify-between border-b p-[2rem] last:border-b-0"
+              className="flex h-[24rem] justify-between border-b border-black-20 bg-bg-10 p-[2rem] last:border-b-0"
             >
               <div className="flex w-[32.9rem] items-center justify-between">
                 {/* 이미지 블록 */}
-                {/* 배경색 #D9D9D9 색상은 현재 디자인 시스템에 없어서 수정 필요 */}
-                <div className="h-[18rem] w-[19.7rem] bg-[#D9D9D9]" />
+                <div className="h-[18rem] w-[19.7rem] bg-black-20" />
                 {/* 텍스트 블록 */}
                 <div className="flex h-[9.9rem] flex-col justify-between">
                   <div className="flex flex-col justify-between">
@@ -62,18 +61,20 @@ const WishlistPage = () => {
                       {item.description}
                     </span>
                   </div>
-                  {/* 폰트 변경 필요 */}
-                  <span className="text-en-18-Medium">{item.price}</span>
+                  <div className="flex items-center gap-[0.2rem]">
+                    <span className="text-k-18-Medium">{item.price}</span>
+                    <span className="text-k-14-Regular">원</span>
+                  </div>
                 </div>
               </div>
               {/* 버튼 */}
               <div className="flex w-[41.2rem] items-end justify-between">
-                <button className="bg-pink-30 text-bg-10 h-[6.4rem] w-[19.6rem] text-k-16-Medium">
+                <button className="h-[6.4rem] w-[19.6rem] bg-pink-30 text-k-16-Medium text-bg-10">
                   장바구니
                 </button>
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="border-black-30 text-black-50 h-[6.4rem] w-[19.6rem] border border-solid text-k-16-Medium"
+                  className="h-[6.4rem] w-[19.6rem] border border-solid border-black-30 text-k-16-Medium text-black-50"
                 >
                   삭제
                 </button>
@@ -94,7 +95,7 @@ const WishlistPage = () => {
           >
             취소
           </button>
-          <button className="bg-pink-30 h-[5.4rem] w-[19.5rem] rounded-[0.8rem] text-k-20-Medium">
+          <button className="h-[5.4rem] w-[19.5rem] rounded-[0.8rem] bg-pink-30 text-k-20-Medium">
             확인
           </button>
         </div>

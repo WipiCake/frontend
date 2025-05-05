@@ -10,9 +10,17 @@ const config = {
         root: '10px',
         // Pretendard Variable 한글
 
+        'k-12-Regular': [
+          '1.2rem',
+          { fontWeight: 400, lineHeight: '150%', letterSpacing: 0 },
+        ],
+        'k-12-Medium': [
+          '1.2rem',
+          { fontWeight: 500, lineHeight: '150%', letterSpacing: 0 },
+        ],
         'k-13-Regular': [
           '1.3rem',
-          { fontWeight: 400, lineHeight: '150%', letterSpacing: '0.1rem' },
+          { fontWeight: 400, lineHeight: '150%', letterSpacing: 0 },
         ],
         'k-13-Medium': [
           '1.3rem',
@@ -54,9 +62,9 @@ const config = {
           '2rem',
           { fontWeight: 700, lineHeight: '150%', letterSpacing: 0 },
         ],
-        'k-24_Regular': [
+        'k-24_Medium': [
           '2.4rem',
-          { fontWeight: 400, lineHeight: '150%', letterSpacing: 0 },
+          { fontWeight: 500, lineHeight: '150%', letterSpacing: 0 },
         ],
         'k-28_Medium': [
           '2.8rem',
