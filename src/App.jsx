@@ -3,7 +3,6 @@ import Contents from './components/body/Contents';
 import MainContent from './components/body/MainContent';
 import Join from './pages/join/Join';
 import Login from './pages/login/Login';
-import FindIdCommonForm from './pages/find-id/FindIdCommonForm';
 import FindId from './pages/find-id/FindId';
 import FindIdVerificationCode from './pages/find-id/FindIdVerificationCode';
 import FindIdCompleted from './pages/find-id/FindIdCompleted';
@@ -23,7 +22,7 @@ function App() {
           <Route path="" element={<MainContent />} />
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/find-id" element={<FindIdCommonForm />}>
+          <Route path="/find-id" element={<FindId />}>
             <Route path="" element={<FindId />} />
             <Route
               path="verification-code"
