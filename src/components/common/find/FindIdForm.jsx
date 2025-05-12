@@ -2,9 +2,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { findIdSchema } from '../../../utils/zod';
+import { useSendPhoneVerification } from '../../../hooks/useVerify';
 
 const FindIdForm = () => {
   const [findMethod, setFindMethod] = useState('phone'); // 'phone' 또는 'email'
+
+  const { mutate: sendPhoneVerification } = useSendPhoneVerification();
 
   const {
     register,
@@ -19,6 +22,12 @@ const FindIdForm = () => {
   });
 
   const onSubmit = (data) => {
+    if (data.findMethod === 'phone') {
+      sendPhoneVerification(data.phone);
+    } else if (data.findMethod === 'email') {
+      console.log('이메일로 찾기:', data.email);
+    }
+
     console.log('🟢 onSubmit 호출됨', data);
   };
 
