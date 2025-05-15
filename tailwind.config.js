@@ -38,6 +38,10 @@ const config = {
           '1.5rem',
           { fontWeight: 400, lineHeight: '150%', letterSpacing: 0 },
         ],
+        'k-15-Medium': [
+          '1.5rem',
+          { fontWeight: 500, lineHeight: '150%', letterSpacing: 0 },
+        ],
         'k-16-Regular': [
           '1.6rem',
           { fontWeight: 400, lineHeight: '150%', letterSpacing: 0 },
@@ -53,6 +57,10 @@ const config = {
         'k-18-Medium': [
           '1.8rem',
           { fontWeight: 500, lineHeight: '150%', letterSpacing: 0 },
+        ],
+        'k-18-Semibold': [
+          '1.8rem',
+          { fontWeight: 600, lineHeight: '150%', letterSpacing: 0 },
         ],
         'k-20-Medium': [
           '2rem',
