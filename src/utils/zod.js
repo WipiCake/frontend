@@ -1,11 +1,34 @@
 import { z } from 'zod';
+import {
+  ADRESS_REQUIRED,
+  BIRTHDAY_REQUIRED,
+  CODE_FORMAT,
+  CODE_INVALID,
+  CODE_REQUIRED,
+  DETAILADRESS_REQUIRED,
+  EMAIL_FORMAT,
+  EMAIL_REQUIRED,
+  ID_FORMAT,
+  ID_REQUIRED,
+  NAME_FORMAT,
+  NAME_REQUIRED,
+  PASSWORD_CONFIRM_INVALID,
+  PASSWORD_CONFIRM_REQUIRED,
+  PASSWORD_FORMAT,
+  PASSWORD_REQUIRED,
+  PHONE_FORMAT,
+  PHONE_REQUIRED,
+  POSTADRESS_REQUIRED,
+  SEX_REQUIRED,
+  TERM_REQUIRED,
+} from '../constants/validation.Constants';
 
 export const loginSchema = z.object({
-  id: z.string().nonempty({ message: '아이디를 입력해주세요.' }),
+  id: z.string().nonempty(ID_REQUIRED),
   password: z
     .string()
-    .nonempty({ message: '비밀번호를 입력해주세요.' })
-    .min(6, { message: '비밀번호는 최소 6자 이상이어야 합니다.' }),
+    .nonempty({ message: PASSWORD_REQUIRED })
+    .min(8, { message: PASSWORD_FORMAT }),
 });
 
 export const findIdSchema = z
@@ -13,21 +36,17 @@ export const findIdSchema = z
     findMethod: z.enum(['phone', 'email']),
     phone: z
       .string()
-      .regex(/^[0-9]{10,11}$/, '10~11자리 숫자만 입력해주세요.')
+      .regex(/^[0-9]{10,11}$/, { message: PHONE_REQUIRED })
       .or(z.literal('')) // <-- 이거 추가!
       .optional(),
-    email: z
-      .string()
-      .email('유효한 이메일 형식을 입력해주세요.')
-      .or(z.literal(''))
-      .optional(),
+    email: z.string().email(EMAIL_FORMAT).or(z.literal('')).optional(),
   })
   .superRefine((data, ctx) => {
     if (data.findMethod === 'phone' && !data.phone) {
       ctx.addIssue({
         path: ['phone'],
         code: z.ZodIssueCode.custom,
-        message: '휴대폰 번호를 입력해주세요.',
+        message: PHONE_REQUIRED,
       });
     }
 
@@ -35,7 +54,7 @@ export const findIdSchema = z
       ctx.addIssue({
         path: ['email'],
         code: z.ZodIssueCode.custom,
-        message: '이메일을 입력해주세요.',
+        message: EMAIL_REQUIRED,
       });
     }
   });
@@ -43,51 +62,57 @@ export const findIdSchema = z
 export const SignUpSchema = z
   .object({
     // 아이디
-    username: z.string().min(1, '아이디는 필수입니다.'),
+    username: z.string({ message: ID_REQUIRED }).min(1, { message: ID_FORMAT }),
 
     // 비밀번호
-    password: z.string().min(8, '비밀번호는 최소 8자 이상이어야 합니다.'),
+    password: z
+      .string({ message: PASSWORD_REQUIRED })
+      .min(8, { message: PASSWORD_FORMAT }),
 
     // 비밀번호 재확인
-    confirmPassword: z.string().min(1, '비밀번호 확인은 필수입니다.'),
+    confirmPassword: z
+      .string({ message: PASSWORD_CONFIRM_REQUIRED })
+      .min(1, { message: PASSWORD_CONFIRM_INVALID }),
 
-    // 비밀번호 재확인
-    name: z.string().min(1, '이름은 필수입니다.'),
+    // 이름 확인
+    name: z.string({ message: NAME_REQUIRED }).min(1, { message: NAME_FORMAT }),
 
     // 이메일 확인
-    email: z.string().email('유효한 이메일을 입력하세요.'),
+    email: z
+      .string({ message: EMAIL_REQUIRED })
+      .email({ message: EMAIL_FORMAT }),
 
     // 전화번호 확인
     phone: z
-      .string()
-      .regex(/^[0-9]{10,11}$/, '유효한 휴대폰 번호를 입력하세요.'),
+      .string({ message: PHONE_REQUIRED })
+      .regex(/^[0-9]{10,11}$/, { message: PHONE_FORMAT }),
+
+    verificationCode: z
+      .string({ message: CODE_REQUIRED })
+      .length(6, { message: CODE_FORMAT })
+      .regex(/^\d+$/, { message: CODE_INVALID }),
 
     // 생년월일 확인
-    birthYear: z.string().min(1, '연도를 입력해주세요'),
-    birthMonth: z.string().min(1, '월을 입력해주세요'),
-    birthDay: z.string().min(1, '일을 입력해주세요'),
+    birthYear: z.string().min(1),
+    birthMonth: z.string().min(1),
+    birthDay: z.string().min(1),
 
     // 입력 주소 확인
-    mainAddress: z.string().min(1, '기본 주소는 필수 입력 항목입니다.'),
-    zipAddress: z.string().min(1, '우편번호는 필수 입력 항목입니다.'),
-    addressDetail: z.string().optional(),
+    mainAddress: z.string({ message: POSTADRESS_REQUIRED }).min(1),
+    zipAddress: z.string({ message: ADRESS_REQUIRED }).min(1),
+    addressDetail: z.string({ message: DETAILADRESS_REQUIRED }).optional(),
 
     // 성별 확인
-    gender: z
-      .string({
-        required_error: '성별을 선택해주세요.',
-        invalid_type_error: '성별을 선택해주세요.',
-      })
-      .min(1, '성별을 선택해주세요.'),
+    gender: z.string().min(1, { message: SEX_REQUIRED }),
 
     // 동의 확인
     termsRequired: z.literal(true, {
-      errorMap: () => ({ message: '이용약관 동의는 필수입니다.' }),
+      errorMap: () => ({ message: TERM_REQUIRED }),
     }),
 
     // 개인정보 동의
     privacyRequired: z.literal(true, {
-      errorMap: () => ({ message: '개인정보 동의는 필수입니다.' }),
+      errorMap: () => ({ message: TERM_REQUIRED }),
     }),
   })
 
@@ -101,12 +126,12 @@ export const SignUpSchema = z
     },
     {
       path: ['birthDay'], // 아무 필드 하나에 묶어서 에러 표시
-      message: '생년월일을 정확히 입력해주세요. (예: 1990 / 05 / 12)',
+      message: BIRTHDAY_REQUIRED,
     },
   )
 
   // 비밀번호 일치 확인 refine은 두 값이 같은지 확인해줌
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
-    message: '비밀번호가 일치하지 않습니다.',
+    message: PASSWORD_CONFIRM_INVALID,
   });

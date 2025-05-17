@@ -4,8 +4,6 @@ import MainContent from './components/body/MainContent';
 import Join from './pages/join/Join';
 import Login from './pages/login/Login';
 import FindId from './pages/find-id/FindId';
-import FindIdVerificationCode from './pages/find-id/FindIdVerificationCode';
-import FindIdCompleted from './pages/find-id/FindIdCompleted';
 import Mypage from './pages/mypage';
 import WishlistPage from './pages/mypage/WishlistPage';
 import OrdersPage from './pages/mypage/OrdersPage';
@@ -22,14 +20,7 @@ function App() {
           <Route path="" element={<MainContent />} />
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/find-id" element={<FindId />}>
-            <Route path="" element={<FindId />} />
-            <Route
-              path="verification-code"
-              element={<FindIdVerificationCode />}
-            />
-            <Route path="completed" element={<FindIdCompleted />} />
-          </Route>
+          <Route path="/find-id" element={<FindId />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/wishlist" element={<WishlistPage />} />
           <Route path="/mypage/orders" element={<OrdersPage />} />
