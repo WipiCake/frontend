@@ -6,7 +6,7 @@ import Liked from '../../assets/img/Liked.svg';
 
 const Header = () => {
   return (
-    <div className="top-[4.7rem] flex h-[9rem] w-full justify-center bg-white">
+    <div className="top-[4.7rem] flex h-[9rem] w-full justify-center border-b border-black-20 bg-white">
       <header className="flex min-w-[128rem] items-center justify-between">
         <div className="flex items-center gap-[0.9rem]">
           <h1>

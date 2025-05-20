@@ -10,6 +10,7 @@ import OrdersPage from './pages/mypage/OrdersPage';
 import AddressPage from './pages/mypage/AddressPage';
 import ScrollToTop from './components/common/ScrollToTop';
 import './global.css';
+import ProductDetail from './pages/productDetail/ProductDetail';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />
           <Route path="/find-id" element={<FindId />} />
+          <Route path="/productdetail" element={<ProductDetail />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/wishlist" element={<WishlistPage />} />
           <Route path="/mypage/orders" element={<OrdersPage />} />
