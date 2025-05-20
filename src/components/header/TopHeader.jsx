@@ -1,7 +1,4 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import Join from './../../pages/join/Join';
-import Login from './../../pages/login/Login';
 
 const TopHeader = () => {
   return (
