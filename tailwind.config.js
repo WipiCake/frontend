@@ -74,6 +74,10 @@ const config = {
           '2.4rem',
           { fontWeight: 500, lineHeight: '150%', letterSpacing: 0 },
         ],
+        'k-24_Semibold': [
+          '2.4rem',
+          { fontWeight: 600, lineHeight: '150%', letterSpacing: 0 },
+        ],
         'k-28_Medium': [
           '2.8rem',
           { fontWeight: 500, lineHeight: '150%', letterSpacing: 0 },
