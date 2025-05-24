@@ -30,8 +30,8 @@ const BaseModal = ({ isOpen, onClose, title, children }) => {
         role="dialog"
         aria-modal="true"
       >
-        <ModalOverlay onClose={onClose} className="bg-[#00000040]" />
-        <div className="bg-bg-10 z-50 flex w-full max-w-[45.4rem] flex-col items-center rounded-[1.6rem]">
+        <ModalOverlay onClose={onClose} />
+        <div className="z-50 flex w-full max-w-[45.4rem] flex-col items-center rounded-[1.6rem] bg-bg-10">
           <span className="mt-[4rem] text-k-20-Medium">{title}</span>
           {children}
         </div>

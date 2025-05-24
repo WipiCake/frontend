@@ -3,7 +3,7 @@
 const ModalOverlay = ({ onClose, className }) => {
   return (
     <div
-      className={`fixed inset-0 ${className || ''}`}
+      className={`fixed inset-0 bg-[#00000040] ${className || ''}`}
       onClick={onClose}
       aria-hidden="true"
     />
