@@ -4,10 +4,7 @@ import Contents from './components/body/Contents';
 import MainContent from './components/body/MainContent';
 import Join from './pages/join/Join';
 import Login from './pages/login/Login';
-import FindIdCommonForm from './pages/find-id/FindIdCommonForm';
 import FindId from './pages/find-id/FindId';
-import FindIdVerificationCode from './pages/find-id/FindIdVerificationCode';
-import FindIdCompleted from './pages/find-id/FindIdCompleted';
 import Mypage from './pages/mypage';
 import VerifyPage from './pages/mypage/VerifyPage';
 import EditPage from './pages/mypage/EditPage';
@@ -16,6 +13,7 @@ import CancelReturnPage from './pages/mypage/CancelReturnPage';
 import OrdersPage from './pages/mypage/OrdersPage';
 import AddressPage from './pages/mypage/AddressPage';
 import './global.css';
+import ProductDetail from './pages/productDetail/ProductDetail';
 
 function App() {
   return (
@@ -26,14 +24,8 @@ function App() {
           <Route path="" element={<MainContent />} />
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/find-id" element={<FindIdCommonForm />}>
-            <Route path="" element={<FindId />} />
-            <Route
-              path="verification-code"
-              element={<FindIdVerificationCode />}
-            />
-            <Route path="completed" element={<FindIdCompleted />} />
-          </Route>
+          <Route path="/find-id" element={<FindId />} />
+          <Route path="/productdetail" element={<ProductDetail />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/veryify" element={<VerifyPage />} />
           <Route path="/mypage/edit" element={<EditPage />} />
