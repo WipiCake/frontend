@@ -6,6 +6,8 @@ import HideEye from '../../assets/img/HideEye.svg';
 import OpenEye from '../../assets/img/OpenEye.svg';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '../../utils/zod';
+import Button from '../../components/common/button/Button';
+import { BASE_URL, USER_LOGIN_URL } from '../../constants/endpoint';
 // import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
@@ -31,19 +33,10 @@ const LoginForm = () => {
     mutationFn: async (data) => {
       console.log(data, 'data');
 
-      const formData = new FormData();
-      formData.append('userId', data.id);
-      formData.append('password', data.password);
-
-      const response = await axios.post(
-        'https://cat-informed-newt.ngrok-free.app/login',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
+      const response = await axios.post(`${BASE_URL}/login`, {
+        username: data.id,
+        password: data.password,
+      });
 
       console.log('res:', response);
       return response;
@@ -137,12 +130,7 @@ const LoginForm = () => {
             아이디 / 비밀번호 찾기
           </a>
         </div>
-        <button
-          className="h-[5.6rem] w-[40rem] bg-[#E88B8B] text-k-16-Medium text-white"
-          type="submit"
-        >
-          로그인
-        </button>
+        <Button type="submit">로그인</Button>
       </form>
     </div>
   );

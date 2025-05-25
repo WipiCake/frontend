@@ -1,9 +1,8 @@
-import React from 'react';
 import LoginCard from './LoginCard';
 
 const Login = () => {
   return (
-    <div className="mx-auto flex w-full justify-center pb-[16.2rem] pt-[8rem]">
+    <div className="mx-auto flex w-full justify-center bg-bg-20 pb-[16.2rem] pt-[8rem]">
       <div className="flex w-full max-w-[128rem] flex-col items-center gap-[2.4rem]">
         <div className="flex flex-col items-center gap-[4rem]">
           <div>
