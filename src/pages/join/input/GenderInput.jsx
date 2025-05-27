@@ -1,13 +1,10 @@
-import RedStar from '../../../assets/img/RedStar.svg';
+import Label from './Label';
 
 const GenderInput = ({ register, errors }) => {
   return (
     <div>
       <div className="flex w-full items-center justify-between">
-        <label className="flex gap-[0.4rem] text-k-16-Medium">
-          성별
-          <img className="pb-[1.6rem]" src={RedStar} alt="필수입력 이미지" />
-        </label>
+        <Label>성별</Label>
 
         <div className="flex h-[5.6rem] flex-col justify-center">
           <div className="flex w-[41.4rem] gap-[6.4rem]">
