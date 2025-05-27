@@ -1,17 +1,19 @@
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import HideEye from '../../assets/img/HideEye.svg';
 import OpenEye from '../../assets/img/OpenEye.svg';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '../../utils/zod';
-// import { useNavigate } from "react-router-dom";
+import Button from '../../components/common/button/Button';
+import { USER_LOGIN_URL } from './../../constants/endpoint';
+import api from '../../api/axiosInstance';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
@@ -32,18 +34,14 @@ const LoginForm = () => {
       console.log(data, 'data');
 
       const formData = new FormData();
-      formData.append('userId', data.id);
+      formData.append('username', data.id);
       formData.append('password', data.password);
 
-      const response = await axios.post(
-        'https://cat-informed-newt.ngrok-free.app/login',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+      const response = await api.post(`${USER_LOGIN_URL}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
         },
-      );
+      });
 
       console.log('res:', response);
       return response;
@@ -51,8 +49,19 @@ const LoginForm = () => {
 
     onSuccess: (response) => {
       console.log('로그인 성공!');
-      console.log('전체 응답 헤더:', response.headers);
-      console.log('응답 바디:', response.data);
+      console.log('전체 응답 헤더:', response.headers); // 헤더 전부 확인
+      console.log('액세스 토큰 : ', response.headers['authorization']);
+      console.log('리프레시 토큰 : ', response.headers['refresh-token']);
+
+      const accessToken = response.headers['authorization'];
+      const refreshToken = response.headers['refresh-token'];
+
+      if (accessToken && refreshToken) {
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
+      }
+
+      navigate('/');
     },
   });
 
@@ -102,11 +111,13 @@ const LoginForm = () => {
             onClick={togglePasswordVisibility}
             className="absolute right-0 top-1/2 -translate-y-1/2 transform text-gray-500"
           >
-            <img
-              src={passwordVisible ? HideEye : OpenEye}
-              alt={passwordVisible ? '비밀번호 숨기기' : '비밀번호 보기'}
-              className="h-[2.4rem] w-[2.4rem]"
-            />
+            {(passwordVisible ? HideEye : OpenEye) && (
+              <img
+                src={passwordVisible ? HideEye : OpenEye}
+                alt={passwordVisible ? '비밀번호 숨기기' : '비밀번호 보기'}
+                className="h-[2.4rem] w-[2.4rem]"
+              />
+            )}
           </button>
           {errors.password && (
             <p className="pt-2 text-[red]">{errors.password.message}</p>
@@ -137,12 +148,7 @@ const LoginForm = () => {
             아이디 / 비밀번호 찾기
           </a>
         </div>
-        <button
-          className="h-[5.6rem] w-[40rem] bg-[#E88B8B] text-k-16-Medium text-white"
-          type="submit"
-        >
-          로그인
-        </button>
+        <Button type="submit">로그인</Button>
       </form>
     </div>
   );
