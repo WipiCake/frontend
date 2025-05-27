@@ -6,7 +6,7 @@ const Contents = () => {
   return (
     <>
       <MainHeader />
-      <div className="h-full min-h-[100vh] w-full pb-[17rem]">
+      <div className="h-full min-h-[100vh] w-full bg-bg-20 pb-[17rem]">
         <Outlet />
       </div>
       <Footer />
