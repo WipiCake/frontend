@@ -136,8 +136,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center pb-[17rem] pt-[8rem]">
-      <h1 className="pb-[7.2rem] text-k-28_Medium text-black-50">회원가입</h1>
+    <div className="flex flex-col items-center justify-center">
       <form
         className="flex w-[63rem] flex-col gap-[3.2rem] bg-bg-10 px-[4.4rem] py-[4rem]"
         onSubmit={handleSubmit(onSubmit)}
