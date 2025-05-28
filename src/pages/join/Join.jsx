@@ -1,11 +1,13 @@
-import React from "react";
-import JoinForm from "./JoinForm";
+import JoinForm from './JoinForm';
+import CenterLayout from '../../layout/CenterLayout';
+import Maintitle from '../../components/common/title/Maintitle';
 
 const Join = () => {
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <CenterLayout>
+      <Maintitle>회원가입</Maintitle>
       <JoinForm />
-    </div>
+    </CenterLayout>
   );
 };
 

@@ -1,6 +1,6 @@
-import RedStar from '../../../assets/img/RedStar.svg';
 import Searach from '../../../assets/img/Search.svg';
 import AddressSearch from './../AddressSearch';
+import Label from './Label';
 
 const AddressInput = ({
   register,
@@ -12,10 +12,7 @@ const AddressInput = ({
   return (
     <div>
       <div className="flex w-full items-start justify-between">
-        <label className="flex gap-[0.4rem] text-k-16-Medium">
-          주소
-          <img className="pb-[1.6rem]" src={RedStar} alt="필수입력 이미지" />
-        </label>
+        <Label>주소</Label>
         <div className="flex w-[41.4rem] flex-col gap-[1.6rem]">
           <div className="flex justify-between">
             <input

@@ -1,13 +1,10 @@
-import RedStar from '../../../assets/img/RedStar.svg';
+import Label from './Label';
 
 const BirthInputGroup = ({ register, errors }) => {
   return (
     <div>
       <div className="flex w-full items-center justify-between">
-        <label className="flex gap-[0.4rem] text-k-16-Medium">
-          생년월일
-          <img className="pb-[1.6rem]" src={RedStar} alt="필수입력 이미지" />
-        </label>
+        <Label>생년월일</Label>
         <div className="flex flex-col">
           <div className="flex h-[5.6rem] w-[41.4rem]">
             <input
