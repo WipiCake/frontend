@@ -1,7 +1,7 @@
-import RedStar from '../../../assets/img/RedStar.svg';
 import check from '../../../assets/img/check.svg';
 import checked from '../../../assets/img/checked.svg';
-import ColorRightArrow from '../../../assets/img/ColorRightArrow.svg';
+import { ColorRightArrow } from '../../../assets/theme';
+import Label from './Label';
 
 const TermsAgreement = ({
   register,
@@ -13,10 +13,7 @@ const TermsAgreement = ({
   return (
     <div>
       <div className="flex w-full items-start justify-between">
-        <label className="flex gap-[0.4rem] text-k-16-Medium">
-          이용약관 동의
-          <img className="pb-[1.6rem]" src={RedStar} alt="필수입력 이미지" />
-        </label>
+        <Label>이용약관 동의</Label>
 
         <div className="flex w-[41.4rem] flex-col gap-[2rem]">
           {/* 전체 동의 */}

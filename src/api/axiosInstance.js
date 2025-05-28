@@ -7,6 +7,8 @@ import { BASE_URL } from '../constants/endpoint';
 // 서버 주소 기본값 설정
 const api = axios.create({
   baseURL: BASE_URL,
+  // withCredentials은 쿠키도 보내는것!!
+  withCredentials: true,
 });
 
 // interceptors는 api 요청 보내기전에 어떤 작업을 도와주는 기능

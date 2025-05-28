@@ -1,23 +1,26 @@
-import axios from 'axios';
-import RedStar from '../../../assets/img/RedStar.svg';
 import { useMutation } from '@tanstack/react-query';
+import api from '../../../api/axiosInstance';
+import { SMS_CODE_URL } from '../../../constants/endpoint';
+import Label from './Label';
 
 const PhoneInput = ({ register, errors, setshowVerificationInput, watch }) => {
+  // 입력한 휴대폰 번호 실시간으로 가져옴
   const phone = watch('phone');
+
+  // React-query의 useMutation을 이용해 인증번호 요청
   const mutation = useMutation({
+    // api 요청
     mutationFn: async () => {
-      const response = await axios.post(
-        'https://cat-informed-newt.ngrok-free.app/sms/code/issue',
-        {
-          toPhoneNumber: phone,
-          purpose: 'AUTH',
-        },
-      );
+      const response = await api.post(`${SMS_CODE_URL}`, {
+        toPhoneNumber: phone,
+        purpose: 'AUTH',
+      });
       return response.data;
     },
     onSuccess: (data) => {
       alert('인증번호가 전송되었습니다.');
       console.log('응답', data);
+      // 인증번호 입력 필드 활성화
       setshowVerificationInput(true);
     },
     onError: (error) => {
@@ -25,6 +28,7 @@ const PhoneInput = ({ register, errors, setshowVerificationInput, watch }) => {
     },
   });
 
+  // 인증번호 요청 버튼 클릭시 실행
   const handleClick = () => {
     if (!phone || phone.length < 10) {
       alert('📵 유효한 휴대폰 번호를 입력해주세요.');
@@ -37,14 +41,11 @@ const PhoneInput = ({ register, errors, setshowVerificationInput, watch }) => {
   return (
     <div>
       <div className="flex w-full items-center justify-between">
-        <label className="flex gap-[0.4rem] text-k-16-Medium">
-          휴대폰
-          <img className="pb-[1.6rem]" src={RedStar} alt="필수입력 이미지" />
-        </label>
+        <Label>휴대폰</Label>
         <div>
           <div className="flex gap-[2rem]">
             <input
-              className="h-[5.6rem] w-[23.7rem] border border-black-30 pl-[1.6rem] text-k-16-Regular"
+              className="h-[5.6rem] w-[23.5rem] border border-black-30 pl-[1.6rem] text-k-16-Regular"
               type="text"
               placeholder="숫자만 입력해주세요"
               {...register('phone')}
