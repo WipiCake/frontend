@@ -1,10 +1,13 @@
-import { useState } from 'react';
-import FindIdForm from './find/FindIdForm';
-import FIndPasswordForm from './find/FIndPasswordForm';
 import CardUi from '../../components/common/cardUi/CardUi';
+import FindId from './find-id/FindId';
+import FindPassword from './find-password/FindPassword';
+import { useActiveTabStore, useFindStore } from '../../lib/zustand/findstore';
 
-const FindIdCard = () => {
-  const [activeTab, setActiveTab] = useState('id');
+const FindCardUi = () => {
+  const { submit } = useFindStore();
+
+  const activeTab = useActiveTabStore((state) => state.activeTab);
+  const setActiveTab = useActiveTabStore((state) => state.setActiveTab);
 
   return (
     <CardUi>
@@ -13,14 +16,17 @@ const FindIdCard = () => {
           <div
             className={`flex h-[6.2rem] w-[20rem] cursor-pointer items-center justify-center border-b-[0.3rem] text-center text-k-16-Medium ${activeTab === 'id' ? 'border-black-50' : 'text-gray-500'}`}
             onClick={() => {
+              if (submit) return;
               setActiveTab('id');
             }}
           >
             아이디 찾기
           </div>
+
           <div
             className={`flex h-[6.2rem] w-[20rem] cursor-pointer items-center justify-center border-b-[0.3rem] text-center text-k-16-Medium ${activeTab === 'password' ? 'border-black-50' : 'text-gray-500'}`}
             onClick={() => {
+              if (submit) return;
               setActiveTab('password');
             }}
           >
@@ -28,18 +34,10 @@ const FindIdCard = () => {
           </div>
         </div>
 
-        <div className="mb-[0.8rem] text-center">
-          <p className="text-k-15-Regular">
-            아이디를 잊어버리셨나요?
-            <br />
-            하단의 정보를 상세히 입력하세요
-          </p>
-        </div>
-
-        {activeTab === 'id' ? <FindIdForm /> : <FIndPasswordForm />}
+        {activeTab === 'id' ? <FindId /> : <FindPassword />}
       </div>
     </CardUi>
   );
 };
 
-export default FindIdCard;
+export default FindCardUi;

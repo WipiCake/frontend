@@ -23,6 +23,7 @@ import {
   TERM_REQUIRED,
 } from '../constants/validation.Constants';
 
+// 로그인 유효성 검사
 export const loginSchema = z.object({
   id: z.string().nonempty(ID_REQUIRED),
   password: z
@@ -59,6 +60,28 @@ export const findIdSchema = z
     }
   });
 
+// 아이디 비밀번호 찾기 페이지의 휴대폰 번호 확인
+export const phoneSchema = z.object({
+  // 전화번호 확인
+  phone: z
+    .string({ message: PHONE_REQUIRED })
+    .regex(/^010\d{8}$/, { message: PHONE_FORMAT }),
+});
+
+// 아이디 비밀번호 찾기 페이지의 휴대폰 번호 확인
+export const emailSchema = z.object({
+  // 이메일 확인
+  email: z.string({ message: EMAIL_REQUIRED }).email({ message: EMAIL_FORMAT }),
+});
+
+// 인증번호 유효성 검사
+export const verificationCodeSchema = z.object({
+  verificationCode: z
+    .string()
+    .regex(/^[0-9]{6}$/, { message: '인증번호는 6자리 숫자로 입력해주세요.' }),
+});
+
+// 회원가입 유효성 검사
 export const SignUpSchema = z
   .object({
     // 아이디
@@ -87,6 +110,7 @@ export const SignUpSchema = z
       .string({ message: PHONE_REQUIRED })
       .regex(/^[0-9]{10,11}$/, { message: PHONE_FORMAT }),
 
+    // 인증번호 유효성 검사
     verificationCode: z
       .string({ message: CODE_REQUIRED })
       .length(6, { message: CODE_FORMAT })
