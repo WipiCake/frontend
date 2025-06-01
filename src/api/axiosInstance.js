@@ -18,7 +18,7 @@ api.interceptors.request.use(
   (config) => {
     // 로그인할때 저장한 accessToken을 로컬스토리지에서 꺼내는 코드
     const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
+    // const refreshToken = localStorage.getItem('refreshToken');
 
     // 액세스 토큰이 있다면 headers에 Authorization이라는 이름으로 토큰 끼어넣어주는 코드
     if (accessToken) {
@@ -26,9 +26,9 @@ api.interceptors.request.use(
     }
 
     // 리프레시 토큰이 있다면 headers에 Refresh-Token 이라는 이름으로 토큰 끼어넣어주는 코드
-    if (refreshToken) {
-      config.headers['refresh-token'] = refreshToken;
-    }
+    // if (refreshToken) {
+    //   config.headers['refresh-token'] = refreshToken;
+    // }
 
     return config;
   },

@@ -4,7 +4,6 @@ import Contents from './components/body/Contents';
 import MainContent from './components/body/MainContent';
 import Join from './pages/join/Join';
 import Login from './pages/login/Login';
-import FindId from './pages/find-id/FindId';
 import Mypage from './pages/mypage';
 import VerifyPage from './pages/mypage/VerifyPage';
 import EditPage from './pages/mypage/EditPage';
@@ -14,6 +13,7 @@ import OrdersPage from './pages/mypage/OrdersPage';
 import AddressPage from './pages/mypage/AddressPage';
 import './global.css';
 import ProductDetail from './pages/productDetail/ProductDetail';
+import Find from './pages/find/Find';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           <Route path="" element={<MainContent />} />
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/find-id" element={<FindId />} />
+          <Route path="/find" element={<Find />} />
           <Route path="/productdetail" element={<ProductDetail />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/veryify" element={<VerifyPage />} />
