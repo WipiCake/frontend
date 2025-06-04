@@ -4,7 +4,7 @@ import { phoneSchema } from '../../utils/zod';
 import { usePhoneCodeIssue } from '../../hooks/usePhoneCodeIssue';
 import FindPhoneVerifyForm from './FindPhoneVerifyForm';
 import { useState } from 'react';
-import { useActiveTabStore, useFindStore } from '../../lib/zustand/findstore';
+import { useActiveTabStore, useFindStore } from '../../lib/zustand/findStore';
 
 const FindPhone = () => {
   const {

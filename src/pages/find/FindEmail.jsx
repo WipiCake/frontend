@@ -4,7 +4,7 @@ import { emailSchema } from '../../utils/zod';
 import { useState } from 'react';
 import { useEmailCodeIssue } from './../../hooks/useEmailCodeIssue';
 import FindEmailVerifyForm from './FIndEmailVerifyForm';
-import { useActiveTabStore, useFindStore } from '../../lib/zustand/findstore';
+import { useActiveTabStore, useFindStore } from '../../lib/zustand/findStore';
 
 const FindEmail = () => {
   const {

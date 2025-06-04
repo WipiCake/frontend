@@ -1,11 +1,11 @@
-import Maintitle from '../../components/common/title/Maintitle';
+import MainTitle from '../../components/common/title/MainTitle';
 import CenterLayout from '../../layout/CenterLayout';
 import FindCardUi from './FindCardUi';
 
 const Find = () => {
   return (
     <CenterLayout>
-      <Maintitle>아이디/비밀번호 찾기</Maintitle>
+      <MainTitle>아이디/비밀번호 찾기</MainTitle>
       <FindCardUi />
     </CenterLayout>
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FindPhone from '../FindPhone';
 import FindEmail from '../FindEmail';
-import { useFindStore } from '../../../lib/zustand/findstore';
+import { useFindStore } from '../../../lib/zustand/findStore';
 
 const FindPassword = () => {
   // 휴대폰 번호로 찾을지 이메일로 찾을지

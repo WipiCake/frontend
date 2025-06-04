@@ -1,11 +1,11 @@
 import JoinForm from './JoinForm';
-import Maintitle from '../../components/common/title/Maintitle';
+import MainTitle from '../../components/common/title/MainTitle';
 import CenterLayout from '../../layout/CenterLayout';
 
 const Join = () => {
   return (
     <CenterLayout>
-      <Maintitle>회원가입</Maintitle>
+      <MainTitle>회원가입</MainTitle>
       <JoinForm />
     </CenterLayout>
   );
