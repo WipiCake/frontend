@@ -1,11 +1,7 @@
 import CardUi from '../../components/common/cardUi/CardUi';
-import { useActiveTabStore, useFindStore } from '../../lib/zustand/findstore';
 import FindId from './find-id/FindId';
 import FindPassword from './find-password/FindPassword';
-<<<<<<< HEAD
-=======
 import { useActiveTabStore, useFindStore } from '../../lib/zustand/findStore';
->>>>>>> 85ccc450912ac5d3bc981db433cfb8e077aaa655
 
 const FindCardUi = () => {
   const { submit } = useFindStore();
