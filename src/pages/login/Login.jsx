@@ -1,7 +1,7 @@
-import Title from '../../components/common/title/title';
+import MainTitle from '../../components/common/title/MainTitle';
+import Title from '../../components/common/title/Title';
 import CenterLayout from '../../layout/CenterLayout';
 import LoginCard from './LoginCard';
-import MainTitle from './../../components/common/title/MainTitle';
 
 const Login = () => {
   return (

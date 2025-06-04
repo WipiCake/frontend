@@ -1,6 +1,6 @@
 import JoinForm from './JoinForm';
+import MainTitle from '../../components/common/title/MainTitle';
 import CenterLayout from '../../layout/CenterLayout';
-import MainTitle from './../../components/common/title/MainTitle';
 
 const Join = () => {
   return (
