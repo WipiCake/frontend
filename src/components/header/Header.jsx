@@ -6,7 +6,7 @@ import Liked from '../../assets/img/Liked.svg';
 
 const Header = () => {
   return (
-    <div className="top-[4.7rem] flex h-[9rem] w-full justify-center border-b border-black-20 bg-white">
+    <div className="top-[4.7rem] flex h-[7.7rem] w-full justify-center border-b border-black-20 bg-white">
       <header className="flex min-w-[128rem] items-center justify-between">
         <div className="flex items-center gap-[0.9rem]">
           <h1>
@@ -21,7 +21,7 @@ const Header = () => {
           <span className="text-k-18-Medium">윗피 케이크</span>
         </div>
         <div>
-          <ul className="flex gap-[3.3rem]">
+          <ul className="flex gap-[1.6rem]">
             <li>
               <a href="#">
                 <img src={User} alt="유저 아이콘" />
