@@ -33,7 +33,9 @@ const BaseModal = ({ isOpen, onClose, title, children }) => {
         <ModalOverlay onClose={onClose} />
         <div className="z-50 flex w-full max-w-[45.4rem] flex-col items-center rounded-[1.6rem] bg-bg-10">
           <span className="mt-[4rem] text-k-20-Medium">{title}</span>
-          {children}
+          <div className="mb-[2.4rem] mt-[4rem] flex w-[40.6rem] justify-between">
+            {children}
+          </div>
         </div>
       </div>
     </ModalPortal>
