@@ -1,44 +1,25 @@
+import { useState } from 'react';
+import { useGetDeliveryAll } from '../../hooks/useDelivery';
 import MypageEmptyState from '../../components/mypage/MypageEmptyState';
+import BaseModal from '../../components/common/Modal/BaseModal';
 import EmptyAddressIcon from '../../assets/mypage/icons/emptyLocation.svg?react';
 
-const items = [
-  {
-    id: 1,
-    name: '우리집',
-    isDefault: true,
-    address: '서울특별시 강남구 역삼동 123-45',
-    detailAddress: '101호',
-    phoneNumber: '010-1234-5678',
-  },
-  {
-    id: 2,
-    name: '부모님 댁',
-    isDefault: false,
-    address: '서울특별시 송파구 잠실동 678-90',
-    detailAddress: '202호',
-    phoneNumber: '010-9876-5432',
-  },
-  {
-    id: 3,
-    name: '친구 집',
-    isDefault: false,
-    address: '서울특별시 마포구 상암동 111-22',
-    detailAddress: '303호',
-    phoneNumber: '010-1357-2468',
-  },
-];
-
 const AddressPage = () => {
+  const { data: deliveryData, isLoading, error } = useGetDeliveryAll();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  if (isLoading) return <p>로딩중...</p>;
+  console.log('배송지 데이터:', deliveryData.data.data);
+
   return (
     <div className="flex flex-col items-center">
       <span className="mt-[8rem] text-k-28_Medium">배송지 관리</span>
-      {/* 아래 div의 mt 간격은 피그마에서 변경된 것으로 임의 제작함 confirm 후에는 주석 지우기 */}
       <div className="mt-[2.1rem] w-[128rem] border-b border-black-30">
         <span className="text-left text-k-18-Medium text-black-40">
           배송지는 최대 5개까지 등록할 수 있습니다.
         </span>
       </div>
-      {items.length === 0 ? (
+      {deliveryData.data.data.length === 0 ? (
         <MypageEmptyState
           icon={<EmptyAddressIcon />}
           contents="등록된 배송지가 없어요."
@@ -46,26 +27,37 @@ const AddressPage = () => {
         />
       ) : (
         <div className="mt-[2rem] w-[128rem]">
-          {items.map((item, id) => (
+          {deliveryData.data.data.map((data) => (
             <div
-              key={id}
-              className="mt-[2rem] h-[17.9rem] bg-black-10 p-[4rem]"
+              key={data.deliveryAddressId}
+              className="mt-[2rem] flex h-[17.9rem] items-end justify-between bg-black-10 p-[4rem]"
             >
               <div className="flex h-[9.9rem] flex-col justify-between">
                 <div className="flex max-w-[14.5rem] justify-between">
                   <span className="text-k-18-Semibold text-black-50">
-                    {item.name}
+                    {data.title}
                   </span>
-                  {item.isDefault && (
+                  {data.defaultDelivery && (
                     <span className="text-k-18-Medium text-black-30">
                       기본 배송지
                     </span>
                   )}
                 </div>
                 <span className="text-k-16-Medium">
-                  {item.address}, {item.detailAddress}
+                  {data.mainAddress}, {data.detailAddress}
                 </span>
-                <span className="text-k-16-Medium">{item.phoneNumber}</span>
+                <span className="text-k-16-Medium">{data.phoneNumber}</span>
+              </div>
+              <div className="flex h-[2.4rem] w-[10.1rem] items-center justify-between">
+                {/* 폰트 수정 필요 */}
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="text-[2rem] font-normal"
+                >
+                  삭제
+                </button>
+                <span className="text-[2rem] font-normal">|</span>
+                <button className="text-[2rem] font-normal">수정</button>
               </div>
             </div>
           ))}
@@ -74,6 +66,21 @@ const AddressPage = () => {
           </button>
         </div>
       )}
+      <BaseModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="배송지를 삭제하시겠습니까?"
+      >
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="h-[5.4rem] w-[19.5rem] rounded-[0.8rem] border border-solid border-black-30 text-k-20-Medium text-black-50"
+        >
+          취소
+        </button>
+        <button className="h-[5.4rem] w-[19.5rem] rounded-[0.8rem] bg-pink-30 text-k-20-Medium text-black-10">
+          확인
+        </button>
+      </BaseModal>
     </div>
   );
 };
