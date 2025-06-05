@@ -20,12 +20,12 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
+        <Route path="" element={<MainContent />} />
         <Route path="/" element={<Contents />}>
-          <Route path="" element={<MainContent />} />
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />
           <Route path="/find" element={<Find />} />
-          <Route path="/productdetail" element={<ProductDetail />} />
+          <Route path="/productdetail/:id" element={<ProductDetail />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/veryify" element={<VerifyPage />} />
           <Route path="/mypage/edit" element={<EditPage />} />
