@@ -53,12 +53,21 @@ const LoginForm = () => {
       console.log('액세스 토큰 : ', response.headers['authorization']);
       console.log('리프레시 토큰 : ', response.headers['refresh-token']);
 
-      const accessToken = response.headers['authorization'];
+      // 토큰 형태 bearer xsdfsdfsdfsd 이런 형태로 옴
+      const rawAccessToken = response.headers['authorization'];
       const refreshToken = response.headers['refresh-token'];
 
-      if (accessToken && refreshToken) {
+      if (rawAccessToken && refreshToken) {
+        // 토큰 앞에 bearer 분리
+        const accessToken = rawAccessToken.replace('Bearer ', '');
+
+        // 분리된 토큰 내용 부분만 저장
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
+
+        console.log('로컬스토리지 저장 완료');
+        console.log('로컬 accessToken:', localStorage.getItem('accessToken'));
+        console.log('로컬 refreshToken:', localStorage.getItem('refreshToken'));
       }
 
       navigate('/');
